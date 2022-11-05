@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- style -->
+    <style>
+        body {
+    background-color: black;
+}
+
+#command{
+    
+    color: {{prompt_color}};
+    font-family: monospace;
+    font-size: medium;
+    background: black;
+    background-color: black;
+    border: none;
+    width: 40%;
+}
+
+#command:focus{
+    outline: none;
+}
+label {
+    color: {{prompt_color}};
+    font-family: monospace;
+    font-size: medium;
+}
+
+#bash_prompt {
+    color: {{prompt_color}};
+    display: block;
+    font-family: monospace;
+    font-size: medium;
+    width: 50%;
+}
+    </style>
+    <!-- end of style -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <!-- <link rel="stylesheet" href="/static/index_style.css"> -->
+    <title>Terminal</title>
+
+</head>
+<body>
+    <div id="bash_prompt">
+
+        {{bash_prompt_response|safe}}
+
+    </div>
+
+    <div id="bash_area">
+
+        <form action="" method="POST">
+
+            <label id="bash_path">{{enterprise_name}}@root: {{prompt_path}} # </label><input id="command" name="command" type="text" placeholder="> Write here" autofocus autocomplete="off">
+            
+            <!-- The following is a JavaScript code to keep the focus in the text input -->
+            <script type="text/javascript">
+                document.getElementById('command').onblur = function (event) { 
+                    var blurEl = this; 
+                    setTimeout(function() {
+                        blurEl.focus()
+                    }, 10);
+                };
+            </script>
+
+        </form>  
+
+    </div>
+
+</body>
+</html>
